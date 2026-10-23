@@ -21,4 +21,8 @@ export class UsersService {
       throw error;
     }
   }
+
+  async getUser(email: string) {
+    return this.prisma.db.orm.public.User.firstOrThrow({ email });
+  }
 }

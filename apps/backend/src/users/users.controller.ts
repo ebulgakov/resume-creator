@@ -5,7 +5,7 @@ import { CreateUserRequest } from "./dto/create-user.request";
 
 @Controller("users")
 export class UsersController {
-  constructor(@Inject(UsersService) private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) {}
   @Post()
   @UseInterceptors(NoFilesInterceptor())
   createUser(@Body() request: CreateUserRequest) {
