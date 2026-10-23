@@ -20,7 +20,6 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    // Make code clean
     "noUnusedLocals": true,
     "noUnusedParameters": true
   }

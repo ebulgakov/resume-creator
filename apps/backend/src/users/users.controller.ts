@@ -1,4 +1,5 @@
-import { Body, Controller, Inject, Post } from "@nestjs/common";
+import { Body, Controller, Inject, Post, UseInterceptors } from "@nestjs/common";
+import { NoFilesInterceptor } from "@nestjs/platform-express";
 import { UsersService } from "./users.service";
 import { CreateUserRequest } from "./dto/create-user.request";
 
@@ -6,6 +7,7 @@ import { CreateUserRequest } from "./dto/create-user.request";
 export class UsersController {
   constructor(@Inject(UsersService) private readonly usersService: UsersService) {}
   @Post()
+  @UseInterceptors(NoFilesInterceptor())
   createUser(@Body() request: CreateUserRequest) {
     return this.usersService.createUser(request);
   }
