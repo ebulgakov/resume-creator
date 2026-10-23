@@ -1,5 +1,6 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { UsersService } from "@/users/users.service";
+import type { Models } from "@/prisma/contract";
 import type { Response } from "express";
 import * as bcrypt from "bcrypt";
 import ms from "ms";
@@ -14,11 +15,10 @@ export class AuthService {
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService
   ) {}
-  // TODO: Fix type
-  async login(user: any, response: Response) {
+  async login(user: Models.public_User, response: Response) {
     const expires = new Date();
     expires.setMilliseconds(
-      expires.getMilliseconds() + ms(this.configService.getOrThrow<string>("JWT_EXPIRATION"))
+      expires.getMilliseconds() + ms(`${this.configService.getOrThrow("JWT_EXPIRATION")}`)
     );
 
     const tokenPayload: TokenPayload = {

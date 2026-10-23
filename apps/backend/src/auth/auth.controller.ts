@@ -3,6 +3,7 @@ import { LocalAuthGuard } from "@/auth/guards/local-auth.guard.ts";
 import { CurrentUser } from "@/auth/current-user.decorator.ts";
 import type { Response } from "express";
 import { AuthService } from "@/auth/auth.service.ts";
+import type { Models } from "@/prisma/contract";
 
 @Controller("auth")
 export class AuthController {
@@ -11,7 +12,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post("login")
   login(
-    @CurrentUser() user: any, // TODO: Fix type
+    @CurrentUser() user: Models.public_User,
     @Res({
       passthrough: true
     })
