@@ -6,5 +6,7 @@ import { UsersService } from "./users.service.js";
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @Post()
-  createUser(@Body() request: CreateUserRequest) {}
+  createUser(@Body() request: CreateUserRequest) {
+    return this.usersService.createUser(request);
+  }
 }

@@ -7,3 +7,4 @@ import { UsersService } from "./users.service.js";
   providers: [UsersService]
 })
 export class UsersModule {}
+
