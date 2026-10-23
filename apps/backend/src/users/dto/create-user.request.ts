@@ -2,7 +2,7 @@ import { IsEmail, IsStrongPassword } from "class-validator";
 
 export class CreateUserRequest {
   @IsEmail()
-  email: string;
+  email: string | undefined;
   @IsStrongPassword()
-  password: string;
+  password: string | undefined;
 }
