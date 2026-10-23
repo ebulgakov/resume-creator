@@ -5,11 +5,11 @@ import type { AuthService } from "../auth.service";
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly authSerice: AuthService) {
+  constructor(private readonly authService: AuthService) {
     super({ usernameField: "email" });
   }
 
   validate(username: string, password: string) {
-    return undefined;
+    return this.authService.verifyUser(username, password);
   }
 }
